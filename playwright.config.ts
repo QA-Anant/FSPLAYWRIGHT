@@ -13,6 +13,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  testMatch: '*.spec.ts', // Ensure this matches your test file naming pattern
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -30,6 +31,8 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    headless: false,
+    navigationTimeout: 40000,
   },
 
   /* Configure projects for major browsers */
@@ -76,4 +79,15 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
+
+  /* Global timeout for all tests. */
+  // timeout: 60 * 1000,
+  //globalTimeout: 60 * 1000,
+  /* Global timeout for each test. */
+  // expect: {
+  //   timeout: 5000, // 5 seconds
+  // },
+  //timeout : 50*1000,
+   
+
 });
