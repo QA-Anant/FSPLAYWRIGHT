@@ -100,6 +100,26 @@ test("tc_day16_2", async({page})=>{
   columnNames.forEach((columnName) => {
     console.log("column name is :", columnName);
   })
+
+  //Row Data
+  let rowcount = await page.locator("table tbody tr").count();
+  console.log("row count is :", rowcount);
+
+  let rows = await page.locator("table tbody tr").all();
+
+  for( const row of rows){
+    let rowData : string[] = [];
+    
+    rowData.push(await row.locator("//td[1]//div[@class='cart-tem-info']/a").innerText());
+    // await row.locator("//td[2]//div/span[@class='sale-price']").innerText();
+    // await row.locator("//td[3]//input").getAttribute("value")??"no data");
+    // await row.locator("//td[1]//div[@class='cart-tem-info']/a").innerText();
+    
+  }
+
+  rowData.forEach((rowData) => {
+    console.log("row data is :", rowData);
+  })
   
   await page.pause();
 })
