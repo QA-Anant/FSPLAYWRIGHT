@@ -7,9 +7,8 @@ test("Login Test", async ({ page }) => {
     let loginPom = new LoginPom(page);
 
     await loginPom.navigateTo();
-    //let homePom : HomePom = await loginPom.submitCredentials("jain.anant4567@gmail.com", "test@123");
-    await loginPom.submitCredentials("jain.anant4567@gmail.com", "test@123");
-    //await homePom.productLinkClick();
+    let homePom : HomePom = await loginPom.submitCredentials("jain.anant4567@gmail.com", "test@123");
+    await homePom.productLinkClick();
 
   
   

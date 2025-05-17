@@ -37,14 +37,7 @@ export default class LoginPom {
     // Method to click the login button
     async clickLoginButton() {
         await this.loginButton.click();
-
-        console.log("Login button clicked");
-        // print the url of the page
-        console.log("Current URL: " + this.page.url());
-
-        // wait on the page after clicking the login button
-    await this.page.waitForTimeout(20000);
-        //return new HomePOM(this.page);
+        return new HomePOM(this.page);
     }
     // Method to perform the login action , method that is not designed to use homepom
     // async login(username: string, password: string) {
@@ -55,10 +48,10 @@ export default class LoginPom {
 
     // submitcredentials
 
-    async submitCredentials(username: string, password: string) {
+    async submitCredentials(username: string, password: string) : Promise<HomePOM> {
         await this.fillUsername(username);
         await this.fillPassword(password);
-        await this.clickLoginButton();
+        return await this.clickLoginButton();
     }
 
 
