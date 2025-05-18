@@ -1,5 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import HomePOM from "./homePom";
+import LoginInputDao from "../dao/inputDao/loginInputDao";
 
 export default class LoginPom {
 
@@ -17,7 +18,6 @@ export default class LoginPom {
 
     // Method to navigate to the page
     navigateTo() {
-        console.log("Current URL: " + this.page.url());
         this.page.goto("account/login");
     }
 
@@ -48,9 +48,9 @@ export default class LoginPom {
 
     // submitcredentials
 
-    async submitCredentials(username: string, password: string) : Promise<HomePOM> {
-        await this.fillUsername(username);
-        await this.fillPassword(password);
+    async submitCredentials(LoginInputDao: LoginInputDao) : Promise<HomePOM> {
+        await this.fillUsername(LoginInputDao.getUsername());
+        await this.fillPassword(LoginInputDao.getPassword());
         return await this.clickLoginButton();
     }
 
