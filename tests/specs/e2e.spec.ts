@@ -12,7 +12,7 @@ test("Login Test", async ({ page }) => {
 
     await loginPom.navigateTo();
 
-    const filePath = Path.join(process.cwd() + "/tests/testdata/testData.json");
+    const filePath = Path.join(process.cwd() + "/tests/testdata/e2e.json");
 
     const testdata = readJsonDataForTestCase(filePath, "TC1");
 
@@ -22,28 +22,10 @@ test("Login Test", async ({ page }) => {
 
     // Json --> JS Object --> LoginDataLayer for compliance check --> DAO layer - InputDAO 
 
-    await loginPom.submitCredentials(loginInputDaoInstance);
+    let homePom : HomePom = await loginPom.submitCredentials(loginInputDaoInstance);
 
-    // let homePom : HomePom = await loginPom.submitCredentials(loginInputDaoInstance);
-    // await homePom.productLinkClick();
+    await page.goto('/');
 
-  
-  
-    //==========================================Rough code to test the login functionality=====================================
-    //await (await (await(await loginPom.fillUsername("jain.anant4567@gmail.com")).fillPassword("test@123")).clickLoginButton());
-    
+    await homePom.productLinkClick();
 
-    // await loginPom.fillPassword("test@123");
-    // await loginPom.clickLoginButton();
-
-    // await homePom.productLinkClick();
-    
-
-    // Fill in the email and password fields
-    // await page.locator('input[name="email"]').fill("jain.anant4567@gmail.com");
-    // await page.locator('input[name="password"]').fill("test@123"); 
-    // // Click the login button
-    // await page.locator('button[type="submit"]').click();
-
-    // await page.locator("//div[contains(@class,'product-list-name')]//a[contains(@href,'nike-react-infinity-run-flyknit-171')]").click();
 })
