@@ -29,10 +29,11 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://demo.evershop.io/',
+    baseURL: 'https://demo.evershop.io',
+
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    //trace: 'on-first-retry',
+    trace: "on",
     headless: false,
     //navigationTimeout: 40000,
     video:'on',

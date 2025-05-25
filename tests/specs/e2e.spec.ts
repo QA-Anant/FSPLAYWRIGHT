@@ -24,8 +24,6 @@ test("Login Test", async ({ page }) => {
 
     let homePom : HomePom = await loginPom.submitCredentials(loginInputDaoInstance);
 
-    await page.goto('/');
-
     await homePom.productLinkClick();
 
 })

@@ -17,8 +17,8 @@ export default class LoginPom {
     }
 
     // Method to navigate to the page
-    navigateTo() {
-        this.page.goto("account/login");
+    async navigateTo() {
+       await this.page.goto("account/login");
     }
 
     // Method to fill in the username
